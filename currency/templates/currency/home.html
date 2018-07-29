@@ -1,0 +1,59 @@
+{% extends 'currency/base.html' %}
+
+{% block content %}
+
+
+
+<div class="jumbotron">
+  <h1 class="display-4">News Network</h1>
+  <p class="lead">A source for currency price and currency related news</p>
+  <hr class="my-4">
+</div>
+
+  <table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">HIGH</th>
+      <th scope="col">LOW</th>
+      <th scope="col">OPEN</th>
+    </tr>
+  </thead>
+{% for key,value in price.DISPLAY.items %}
+  <tbody>
+    <tr>
+      <td>{{key}}</td>
+      <td>{{value.INR.PRICE}}</td>
+      <td>{{value.INR.HIGHDAY}}</td>
+      <td>{{value.INR.LOWDAY}}</td>
+      <td>{{value.INR.OPENDAY}}</td>
+
+    </tr>
+ {% endfor %}
+   <br/><br/>
+  </tbody>
+</table>
+
+<br/><br/>
+
+<div class="container">
+  <div class="row">
+  {% for x in api.Data %}
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{x.imageurl}}" alt="{{x.source}}">
+            <div class="card-body">
+              <h5 class="card-title">{{x.title}}</h5>
+              <p class="card-text">Site for crytocurrency price updates</p>
+              <a href="{{x.url}}" class="btn btn-primary">Read More ...</a>
+            </div>
+          </div>
+        <br/>
+      </div>
+   {%endfor%}
+  </div>
+</div>
+
+
+{%endblock%}
